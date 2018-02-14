@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://pupper-cam.firebaseapp.com/broadcast.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>Firebase Video Conferencing Demo using RTCMultiConnection</title>
+
+    <meta name="description" content="Use firebase as a signaling medium for video conferencing along with RTCMultiConnection">
+    <meta name="keywords" content="WebRTC,RTCMultiConnection,Demos,Experiments,Samples,Examples">
+
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    video {
+        width: 100vw;
+    }
+    </style>
+</head>
+
+<body>
+    <article>
+
+
+        <video id="view" autoplay muted></video>
+
+        <script src="/js/RTCMultiConnection.min.js"></script>
+        <script src="/js/FirebaseConnection.js"></script>
+        <script src="/js/FileBufferReader.js"></script>
+        <script src="/js/firebase.js"></script>
+        <script src="/js/app.js"></script>
+        <script src="/js/soundjs.min.js"></script>
+
+        <script type="text/javascript">
+            connection.channel = 'poopbutt';
+            connection.open('poopbutt', function(stream) {
+                document.getElementById('view').srcObject = stream
+                // showRoomURL(connection.sessionid);
+            });
+
+            createjs.Sound.registerSound({src:"/sound/bell.mp3", id:"bell"});
+            createjs.Sound.on("fileload", function() {
+                connection.onmessage = function(e){
+                    if (e.data == 'henlo') {
+                        createjs.Sound.play("bell")
+                    }
+                }
+            });
+        </script>
+
+    </article>
+
+
+
+
+</body></html>
